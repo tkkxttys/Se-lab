@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "fireship-lessons"
-  }
+    "default": "kitty-e6351",
+    "kitty": "kitty-e6351"
+  },
+  "targets": {},
+  "etags": {}
 }
