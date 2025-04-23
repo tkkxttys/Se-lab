@@ -1,31 +1,8 @@
-# name: Firebase Continuous Deployment
-
-# on:
-#   push:
-#     branches: [ master ]
-
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@master
-#       - uses: actions/setup-node@master
-#         with:
-#           node-version: 12
-#       - run: npm ci
-#       - run: npm run build
-#       - uses: w9jds/firebase-action@master
-#         with:
-#           args: deploy --only hosting
-#         env:
-#           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
 name: Firebase Continuous Deployment
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 
 jobs:
@@ -35,13 +12,12 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: 23
+          node-version: 12
       - run: npm ci
       - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: w9jds/firebase-action@master
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
-          projectId: cicd1-8748d
-          channelId: live
-          
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    
